@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleUsernameChange = (event) => {
     setUsername(event.target.value);
@@ -22,22 +24,18 @@ const Login = () => {
     const storedPassword = localStorage.getItem('password');
     if (storedUsername === username && storedPassword === password) {
       setLoggedIn(true);
-      console.log("inicio de sesión conseguido")
+      alert('Successful Login!');
+      navigate('/dashboard');
+      
     } else {
       alert('Nombre de usuario o contraseña incorrectos');
     }
-  };
 
-  if (loggedIn) {
-    return (
-      <div className="registro-container">
-        <h1>Successful Login!</h1>
-      </div>
-    );
-  }
+  };
   
+
+
   return (
-    
     <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -66,7 +64,7 @@ const Login = () => {
                     </label>
                     </div>
                     <div className="form-control mt-6">
-                        <button className="btn btn-primary">Login</button>
+                        <button type="submit" className="btn btn-primary">Login</button>
                     </div>
                     <div className="py-4">
                         <p>Don't have an account? <Link to='/signup' className="link" >Sign up</Link></p>

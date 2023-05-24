@@ -3,6 +3,7 @@ import { useState } from 'react'
 import Home from './pages/Home'
 import LoginPage from './pages/LoginPage'
 import SignUpPage from './pages/SignUpPage'
+import DashboardPage from './pages/DashboardPage'
 import './App.css'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home/>} />
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/signup" element={<SignUpPage/>} />
+          <Route path="/dashboard" element={<DashboardPage/>} />
         </Routes>
       </BrowserRouter>
   )
