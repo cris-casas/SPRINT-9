@@ -49,61 +49,7 @@ const DashboardPage = () => {
 
 export default DashboardPage;
 
-
-
 /*{
-
-
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
-const DashboardPage = () => {
-  const [games, setGames] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    axios.get('https://api.boardgameatlas.com/api/search?limit=100&client_id=AUi6AFUDNI')
-      .then(res => {
-        const filteredGames = res.data.games.filter(game => game.name); // Filtrar los juegos que tienen el campo name
-        const gameNames = filteredGames.map(game => game.name);
-        setGames(gameNames);
-      })
-      .catch(error => {
-        console.error('Error fetching games:', error);
-      });
-  }, []);
-
-  const handleSearchTermChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filteredGames = games.filter(game => game.toLowerCase().includes(searchTerm.toLowerCase()));
-
-  return (
-    <>
-      <div className="form-control w-full max-w-xs">
-        <label className="label">
-          <span className="label-text">Search for a game</span>
-          <span className="label-text-alt">Alt label</span>
-        </label>
-        <input
-          type="text"
-          className="input input-bordered w-full max-w-xs"
-          placeholder="Enter a game name"
-          value={searchTerm}
-          onChange={handleSearchTermChange}
-        />
-        <ul>
-          {filteredGames.map((gameName, index) => (
-            <li key={index}>{gameName}</li>
-          ))}
-        </ul>
-      </div>
-    </>
-  );
-};
-
-export default DashboardPage;
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
