@@ -16,6 +16,7 @@ const DashboardPage = () => {
         console.error('Error fetching games:', error);
       });
   }, []);
+  
 
   const handleSearchTermChange = (event) => {
     setSearchTerm(event.target.value);

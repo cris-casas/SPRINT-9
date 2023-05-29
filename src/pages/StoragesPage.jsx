@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 
 const DashboardPage = () => {
   const [objects, setObjects] = useState([
-    { id: 1, name: 'Object 1', prices: { priceOptionA: 10, priceOptionB: 11, priceOptionC: 12, priceOptionD: 13 }, selectedPrice: null, storage: ['Storage 1','Storage 2','Storage 3'] },
-    { id: 2, name: 'Object 2', prices: { priceOptionA: 20, priceOptionB: 21, priceOptionC: 22, priceOptionD: 23 }, selectedPrice: null, storage: ['Storage 1','Storage 3'] },
-    { id: 3, name: 'Object 3', prices: { priceOptionA: 30, priceOptionB: 31, priceOptionC: 32, priceOptionD: 33 }, selectedPrice: null, storage: ['Storage 2','Storage 3'] },
-    { id: 4, name: 'Object 4', prices: { priceOptionA: 40, priceOptionB: 41, priceOptionC: 42, priceOptionD: 43 }, selectedPrice: null, storage: ['Storage 2','Storage 3'] },
-    { id: 5, name: 'Object 5', prices: { priceOptionA: 50, priceOptionB: 51, priceOptionC: 52, priceOptionD: 53 }, selectedPrice: null, storage: ['Storage 1','Storage 2','Storage 3'] },
+    { id: 1, name: 'Silla', prices: { priceOptionA: 10, priceOptionB: 11, priceOptionC: 12, priceOptionD: 13 }, selectedPrice: null, storage: ['Storage 1','Storage 2','Storage 3'] },
+    { id: 2, name: 'Bici', prices: { priceOptionA: 20, priceOptionB: 21, priceOptionC: 22, priceOptionD: 23 }, selectedPrice: null, storage: ['Storage 1','Storage 3'] },
+    { id: 3, name: 'Lámpara', prices: { priceOptionA: 30, priceOptionB: 31, priceOptionC: 32, priceOptionD: 33 }, selectedPrice: null, storage: ['Storage 2','Storage 3'] },
+    { id: 4, name: 'Reloj', prices: { priceOptionA: 40, priceOptionB: 41, priceOptionC: 42, priceOptionD: 43 }, selectedPrice: null, storage: ['Storage 2','Storage 3'] },
+    { id: 5, name: 'Teléfono', prices: { priceOptionA: 50, priceOptionB: 51, priceOptionC: 52, priceOptionD: 53 }, selectedPrice: null, storage: ['Storage 1','Storage 2','Storage 3'] },
   ]);
 
   const handleOptionClick = (option) => {
@@ -68,32 +68,73 @@ const DashboardPage = () => {
   
   return (
     <>
-      <div>
-        <button onClick={() => handleOptionClick('priceOptionA')}>Opción A</button>
-        <button onClick={() => handleOptionClick('priceOptionB')}>Opción B</button>
-        <button onClick={() => handleOptionClick('priceOptionC')}>Opción C</button>
-        <button onClick={() => handleOptionClick('priceOptionD')}>Opción D</button>
-      </div>
-      <div>
-      {objects.map(object => (
-        <div key={object.id}>
-          <label>
-            <input
-              type="checkbox"
-              checked={object.seleccionado || false}
-              onChange={event => handleCheckboxChange(event, object.id)}
-            />
-            {object.name}
-          </label>
+      <div className="hero bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-3xl font-bold mb-10">Elige una opción de precio </h1>
+            <div className="btn-group btn-group-vertical">
+              <button className="btn btn-outline" onClick={() => handleOptionClick('priceOptionA')}>Opción A</button>
+              <button className="btn btn-outline" onClick={() => handleOptionClick('priceOptionB')}>Opción B</button>
+              <button className="btn btn-outline" onClick={() => handleOptionClick('priceOptionC')}>Opción C</button>
+              <button className="btn btn-outline" onClick={() => handleOptionClick('priceOptionD')}>Opción D</button>
+            </div>
+          </div>
         </div>
-      ))}
-      <button onClick={handleEliminarClick}>Eliminar</button>
       </div>
-      <div>
-        <button onClick={() => handleStorage('Storage 1')}>Storage 1</button>
-        <button onClick={() => handleStorage('Storage 2')}>Storage 2</button>
-        <button onClick={() => handleStorage('Storage 3')}>Storage 3</button>
+
+      <div className="hero bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-3xl font-bold mb-10">Selecciona los objetos que no estan en juego</h1>
+            <div className="form-control">
+              {objects.map(object => (
+                <div key={object.id}>
+                  <label className="label cursor-pointer">
+                  <span className="label-text text-xl"> {object.name}</span>
+                    <input
+                      type="checkbox"
+                      className="checkbox"
+                      checked={object.seleccionado || false}
+                      onChange={event => handleCheckboxChange(event, object.id)}
+                    />
+                  </label>
+                </div>
+              ))}
+              <button className="btn btn-outline" onClick={handleEliminarClick}>Eliminar</button>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <div className="hero bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+            <h1 className="text-3xl font-bold mb-10">Storages</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text text-xl">Storage 1</span>
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="input-group input-group-md">
+                <span>Price</span>
+                <input type="text" placeholder="Introduce el precio pagado" className="input input-bordered" />
+                <span>€</span>
+              </label>
+            </div>
+            <div className="form-control">
+              <label className="input-group input-group-md">
+                <span>Jugador</span>
+                <input type="text" placeholder="jugador que ganó la subasta" className="input input-bordered" />
+              </label>
+              <button className="btn btn-outline" onClick={() => handleStorage('Storage 1')}>Aceptar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      
     </>
   );
 };

@@ -25,7 +25,7 @@ const Login = () => {
     if (storedUsername === username && storedPassword === password) {
       setLoggedIn(true);
       alert('Successful Login!');
-      navigate('/dashboard');
+      navigate('/storages');
       
     } else {
       alert('Nombre de usuario o contraseña incorrectos');
