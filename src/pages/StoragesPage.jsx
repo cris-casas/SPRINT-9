@@ -9,6 +9,27 @@ const DashboardPage = () => {
     { id: 5, name: 'Teléfono', prices: { priceOptionA: 50, priceOptionB: 51, priceOptionC: 52, priceOptionD: 53 }, selectedPrice: null, storage: ['Storage 1','Storage 2','Storage 3'] },
   ]);
 
+  const [storages, setStorages] = useState([
+    { 
+      id: 1, 
+      name: 'Storage 1', 
+      value: 3000, 
+      formData: { price: '', player: '' },
+    },
+    { 
+      id: 2, 
+      name: 'Storage 2', 
+      value: 6000, 
+      formData: { price: '', player: '' },
+    },
+    { 
+      id: 3, 
+      name: 'Storage 3', 
+      value: 5000, 
+      formData: { price: '', player: '' },
+    },
+  ]);
+
   const handleOptionClick = (option) => {
     const updatedObjects = objects.map((object) => ({
       ...object,
@@ -19,27 +40,16 @@ const DashboardPage = () => {
   };
 
   const handleCheckboxChange = (event, id) => {
-    if (event.target.checked) {
-      setObjects(objects.map(object => {
-        if (object.id === id) {
-          return {
-            ...object,
-            seleccionado: true
-          };
-        }
-        return object;
-      }));
-    } else {
-      setObjects(objects.map(object => {
-        if (object.id === id) {
-          return {
-            ...object,
-            seleccionado: false
-          };
-        }
-        return object;
-      }));
-    }
+    const updatedObjects = objects.map((object) => {
+      if (object.id === id) {
+        return {
+          ...object,
+          seleccionado: event.target.checked,
+        };
+      }
+      return object;
+    });
+    setObjects(updatedObjects);
   };
 
   const handleEliminarClick = () => {
@@ -47,31 +57,40 @@ const DashboardPage = () => {
     setObjects(objetosFiltrados);
   };
 
-  const [selectedStorage, setSelectedStorage] = useState(null);
-
-  const handleStorage = (storage) => {
-    const filteredObjects = objects.filter(object => object.storage.includes(storage));
-    const totalSelectedPrice = filteredObjects.reduce((sum, object) => sum + object.selectedPrice, 0);
-  
-    const selectedStorage = {
-      storage,
-      objects: filteredObjects.map(object => ({
-        name: object.name,
-      })),
-      totalSelectedPrice,
-    };
-  
-    setSelectedStorage(selectedStorage);
-    console.log(selectedStorage);
+  const handleStorage = () => {
+    // Ejecutar el código necesario al hacer clic en "Aceptar" para todos los storages
+    storages.forEach(storage => {
+      // Aquí puedes ejecutar el código que necesitas para cada storage
+      const price = storage.formData.price;
+      const player = storage.formData.player;
+      // ...
+    });
+    console.log(storages);
   };
-  
+
+  const handleInputChange = (event, storageId) => {
+    const { name, value } = event.target;
+    const updatedStorages = storages.map((storage) => {
+      if (storage.id === storageId) {
+        return {
+          ...storage,
+          formData: {
+            ...storage.formData,
+            [name]: value,
+          },
+        };
+      }
+      return storage;
+    });
+    setStorages(updatedStorages);
+  };
   
   return (
     <>
       <div className="hero bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-3xl font-bold mb-10">Elige una opción de precio </h1>
+            <h1 className="text-3xl font-bold mb-10">Elige una opción de precio</h1>
             <div className="btn-group btn-group-vertical">
               <button className="btn btn-outline" onClick={() => handleOptionClick('priceOptionA')}>Opción A</button>
               <button className="btn btn-outline" onClick={() => handleOptionClick('priceOptionB')}>Opción B</button>
@@ -85,12 +104,12 @@ const DashboardPage = () => {
       <div className="hero bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
-            <h1 className="text-3xl font-bold mb-10">Selecciona los objetos que no estan en juego</h1>
+            <h1 className="text-3xl font-bold mb-10">Elimina los objetos que no están en juego</h1>
             <div className="form-control">
               {objects.map(object => (
                 <div key={object.id}>
                   <label className="label cursor-pointer">
-                  <span className="label-text text-xl"> {object.name}</span>
+                    <span className="label-text text-xl">{object.name}</span>
                     <input
                       type="checkbox"
                       className="checkbox"
@@ -106,40 +125,55 @@ const DashboardPage = () => {
         </div>
       </div>
 
-      <div className="hero bg-base-200">
-        <div className="hero-content text-center">
-          <div className="max-w-md">
-            <h1 className="text-3xl font-bold mb-10">Storages</h1>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text text-xl">Storage 1</span>
-              </label>
-            </div>
-            <div className="form-control">
-              <label className="input-group input-group-md">
-                <span>Price</span>
-                <input type="text" placeholder="Introduce el precio pagado" className="input input-bordered" />
-                <span>€</span>
-              </label>
-            </div>
-            <div className="form-control">
-              <label className="input-group input-group-md">
-                <span>Jugador</span>
-                <input type="text" placeholder="jugador que ganó la subasta" className="input input-bordered" />
-              </label>
-              <button className="btn btn-outline" onClick={() => handleStorage('Storage 1')}>Aceptar</button>
+      {storages.map((storage) => (
+        <div className="hero bg-base-200" key={storage.id}>
+          <div className="hero-content text-center">
+            <div className="max-w-md">
+              <div className="form-control">
+                <h2 className="text-lg font-bold my-5">{storage.name}</h2>
+                <label className="input-group input-group-md">
+                  <span>Price</span>
+                  <input
+                    type="text"
+                    placeholder="Introduce el precio pagado"
+                    className="input input-bordered"
+                    name="price"
+                    value={storage.formData.price}
+                    onChange={(e) => handleInputChange(e, storage.id)}
+                  />
+                  <span>€</span>
+                </label>
+                <label className="input-group input-group-md">
+                  <span>Jugador</span>
+                  <input
+                    type="text"
+                    placeholder="Jugador que ganó la subasta"
+                    className="input input-bordered"
+                    name="player"
+                    value={storage.formData.player}
+                    onChange={(e) => handleInputChange(e, storage.id)}
+                  />
+                </label>
+              </div>
             </div>
           </div>
         </div>
+      ))}
+
+      <div className="hero bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+          <button className="btn btn-outline" onClick={handleStorage}>Aceptar</button>
+          </div>
+        </div>
       </div>
-
-
-      
     </>
   );
 };
 
 export default DashboardPage;
+
+
 
 /*{
 
