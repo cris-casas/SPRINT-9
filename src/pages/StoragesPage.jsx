@@ -30,6 +30,11 @@ const DashboardPage = () => {
     },
   ]);
 
+  const [showTable, setShowTable] = useState(false);
+
+  const [winningPlayer, setWinningPlayer] = useState("");
+
+
   const handleOptionClick = (option) => {
     const updatedObjects = objects.map((object) => ({
       ...object,
@@ -58,15 +63,35 @@ const DashboardPage = () => {
   };
 
   const handleStorage = () => {
-    // Ejecutar el código necesario al hacer clic en "Aceptar" para todos los storages
+    let maxBenefit = -Infinity; // Inicializar el beneficio máximo como -Infinity
+    let maxBenefitStorage = null; // Almacenar el storage con el mayor beneficio
+    let winningPlayer = null; // Almacenar el nombre del jugador ganador
+    
     storages.forEach(storage => {
-      // Aquí puedes ejecutar el código que necesitas para cada storage
       const price = storage.formData.price;
       const player = storage.formData.player;
-      // ...
+      const benefit = storage.value - price;
+      
+      if (benefit > maxBenefit) {
+        maxBenefit = benefit;
+        maxBenefitStorage = storage.name;
+        winningPlayer = player;
+      }
     });
-    console.log(storages);
+    
+    setShowTable(true); // Mostrar la tabla
+    
+    // Mostrar el nombre del jugador ganador si existe
+    if (winningPlayer) {
+      setWinningPlayer(winningPlayer);
+    } else {
+      setWinningPlayer("No hay un jugador ganador");
+    }
+    
+    console.log(`Storage con mayor beneficio: ${maxBenefitStorage}`);
+    console.log(`Jugador ganador: ${winningPlayer}`);
   };
+  
 
   const handleInputChange = (event, storageId) => {
     const { name, value } = event.target;
@@ -125,6 +150,9 @@ const DashboardPage = () => {
         </div>
       </div>
 
+
+      <h1 className="text-3xl font-bold mt-10">Trasteros comprados</h1>
+
       {storages.map((storage) => (
         <div className="hero bg-base-200" key={storage.id}>
           <div className="hero-content text-center">
@@ -163,10 +191,54 @@ const DashboardPage = () => {
       <div className="hero bg-base-200">
         <div className="hero-content text-center">
           <div className="max-w-md">
-          <button className="btn btn-outline" onClick={handleStorage}>Aceptar</button>
+          <button className="btn btn-outline" onClick={handleStorage}>Calcular</button>
           </div>
         </div>
       </div>
+
+      {showTable && (
+      <div className="hero bg-base-200">
+        <div className="hero-content text-center">
+          <div className="max-w-md">
+          <h1 className="text-3xl font-bold my-10">Resultados</h1>
+            <table className="table w-full">
+              <thead>
+                <tr>
+                  <th>Trastero</th>
+                  <th>Comprado</th>
+                  <th>Precio</th>
+                  <th>Valor real</th>
+                  <th>Beneficio</th>
+                </tr>
+              </thead>
+              <tbody>
+                {storages.map(storage => (
+                  <tr key={storage.id}>
+                    <td>{storage.name}</td>
+                    <td>{storage.formData.player}</td>
+                    <td>{storage.formData.price}</td>
+                    <td>{storage.value}</td>
+                    <td>{storage.value - storage.formData.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      )}
+
+      {winningPlayer && (
+        <div className="hero bg-base-200">
+          <div className="hero-content text-center">
+            <div className="max-w-md">
+            <h1 className="text-3xl font-bold my-10">¡Ganador!</h1>
+              <p>{winningPlayer}</p>
+            </div>
+          </div>
+        </div>
+      )}
+
     </>
   );
 };
