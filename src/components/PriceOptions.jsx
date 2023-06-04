@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GameContext } from "../context/GameContext";
 
-const PriceOptions = ({ handleOptionClick }) => {
+const PriceOptions = () => {
+  
+  const { handleOptionClick } = useContext(GameContext);
+
   return (
     <div className="hero bg-base-200">
       <div className="hero-content text-center">

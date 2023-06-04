@@ -1,38 +1,16 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { LogInContext } from "../context/LogInContext";
 
 const Login = () => {
-
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
-
-  const navigate = useNavigate();
-
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    const storedUsername = localStorage.getItem('username');
-    const storedPassword = localStorage.getItem('password');
-    if (storedUsername === username && storedPassword === password) {
-      setLoggedIn(true);
-      alert('Successful Login!');
-      navigate('/storages');
-      
-    } else {
-      alert('Nombre de usuario o contraseña incorrectos');
-    }
-
-  };
-  
+  const {
+    username,
+    password,
+    loggedIn,
+    handleUsernameChange,
+    handlePasswordChange,
+    handleSubmit,
+  } = useContext(LogInContext);
 
 
   return (
