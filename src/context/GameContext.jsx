@@ -1,4 +1,5 @@
 import React, { useState, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const GameContext = createContext();
 
@@ -37,14 +38,17 @@ const GameProvider = ({ children }) => {
 
   const [winningPlayer, setWinningPlayer] = useState("");
 
+ // const navigate = useNavigate();
 
   const handleOptionClick = (option) => {
+    
     const updatedObjects = objects.map((object) => ({
       ...object,
       selectedPrice: object.prices[option],
     }));
     setObjects(updatedObjects);
     console.log(updatedObjects);
+   // navigate('/objects');
   };
 
   const handleCheckboxChange = (event, id) => {

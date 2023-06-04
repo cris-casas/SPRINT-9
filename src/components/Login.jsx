@@ -6,7 +6,6 @@ const Login = () => {
   const {
     username,
     password,
-    loggedIn,
     handleUsernameChange,
     handlePasswordChange,
     handleSubmit,

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GameContext } from "../context/GameContext";
+import { Link } from 'react-router-dom';
 
 const Storages = () => {
   
@@ -47,7 +48,9 @@ const Storages = () => {
         <div className="hero bg-base-200">
         <div className="hero-content text-center">
             <div className="max-w-md">
-            <button className="btn btn-outline" onClick={handleStorage}>Calcular</button>
+            <Link to='/results' className="link" >
+                <button className="btn btn-outline" onClick={handleStorage}>Calcular</button>
+            </Link>
             </div>
         </div>
         </div>

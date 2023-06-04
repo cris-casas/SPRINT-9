@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GameContext } from "../context/GameContext";
+import { Link } from 'react-router-dom';
 
 const Objects = () => {
   
@@ -24,7 +25,7 @@ const Objects = () => {
             </label>
             </div>
         ))}
-        <button className="btn btn-outline" onClick={handleEliminarClick}>Eliminar</button>
+        <Link to='/storages' className="link" ><button className="btn btn-outline" onClick={handleEliminarClick}>Eliminar</button></Link>
         </div>
     </div>
     </div>
