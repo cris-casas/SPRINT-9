@@ -13,11 +13,9 @@ const Login = () => {
 
 
   return (
-    <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-            <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                <h1 className="font-black" >Login to your account</h1>
-            <div className="card-body">
+
+        <div className="card-body flex justify-center">
+            <h1 className="font-black" >Login to your account</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-control">
                     <label className="label">
@@ -47,10 +45,8 @@ const Login = () => {
                         <p>Don't have an account? <Link to='/signup' className="link" >Sign up</Link></p>
                     </div>
                 </form>
-            </div>
-            </div>
         </div>
-    </div>
+
   );
 };
 

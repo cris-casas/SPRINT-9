@@ -26,7 +26,7 @@ const LogInProvider = ({ children }) => {
     if (storedUsername === username && storedPassword === password) {
       setLoggedIn(true);
       alert('Successful Login!');
-      navigate('/price');
+      navigate('/start');
       
     } else {
       alert('Nombre de usuario o contraseña incorrectos');

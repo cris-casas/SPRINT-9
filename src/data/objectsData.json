@@ -58,6 +58,66 @@
       },
       "selectedPrice": null,
       "storage": ["Storage 1", "Storage 2", "Storage 3"]
+    },
+    {
+      "id": 6,
+      "name": "Piano",
+      "prices": {
+        "priceOptionA": 50,
+        "priceOptionB": 51,
+        "priceOptionC": 52,
+        "priceOptionD": 53
+      },
+      "selectedPrice": null,
+      "storage": ["Storage 1", "Storage 2", "Storage 3"]
+    },
+    {
+      "id": 7,
+      "name": "Guitarra",
+      "prices": {
+        "priceOptionA": 50,
+        "priceOptionB": 51,
+        "priceOptionC": 52,
+        "priceOptionD": 53
+      },
+      "selectedPrice": null,
+      "storage": ["Storage 1", "Storage 2", "Storage 3"]
+    },
+    {
+      "id": 8,
+      "name": "Alfombra",
+      "prices": {
+        "priceOptionA": 50,
+        "priceOptionB": 51,
+        "priceOptionC": 52,
+        "priceOptionD": 53
+      },
+      "selectedPrice": null,
+      "storage": ["Storage 1", "Storage 2", "Storage 3"]
+    },
+    {
+      "id": 9,
+      "name": "Chaqueta",
+      "prices": {
+        "priceOptionA": 50,
+        "priceOptionB": 51,
+        "priceOptionC": 52,
+        "priceOptionD": 53
+      },
+      "selectedPrice": null,
+      "storage": ["Storage 1", "Storage 2", "Storage 3"]
+    },
+    {
+      "id": 10,
+      "name": "Anillo",
+      "prices": {
+        "priceOptionA": 50,
+        "priceOptionB": 51,
+        "priceOptionC": 52,
+        "priceOptionD": 53
+      },
+      "selectedPrice": null,
+      "storage": ["Storage 1", "Storage 2", "Storage 3"]
     }
   ]
   

@@ -1,35 +1,40 @@
 import React, { useContext } from 'react';
 import { GameContext } from "../context/GameContext";
 import { Link } from 'react-router-dom';
+import Lampara from "../assets/lampara.svg";
 
 const Objects = () => {
   
   const { objects, handleCheckboxChange, handleEliminarClick } = useContext(GameContext);
 
   return (
-    <div className="hero bg-base-200">
-    <div className="hero-content text-center">
-    <div className="max-w-md">
-        <h1 className="text-3xl font-bold mb-10">Elimina los objetos que no están en juego</h1>
-        <div className="form-control">
+  <>
+    <div className="overflow-y-auto h-100">
+      <div className="form-control pt-5">
+      <div className="grid grid-cols-2 gap-4 m-6">
         {objects.map(object => (
-            <div key={object.id}>
-            <label className="label cursor-pointer">
-                <span className="label-text text-xl">{object.name}</span>
-                <input
+          <div key={object.id} className="card border-solid border-2 border-primary shadow-lg">
+            <figure>
+              <img src={Lampara} alt="Shoes" />
+            </figure>
+            <div className="card-body items-center text-center p-0">
+              <h2 className="card-title">{object.name}</h2>
+              <div className="card-actions">
+              <input
                 type="checkbox"
                 className="checkbox"
                 checked={object.seleccionado || false}
                 onChange={event => handleCheckboxChange(event, object.id)}
                 />
-            </label>
+              </div>
             </div>
+          </div>
         ))}
-        <Link to='/storages' className="link" ><button className="btn btn-outline" onClick={handleEliminarClick}>Eliminar</button></Link>
+        </div>
+          <Link to='/storages' className="link" ><button className="btn m-4" onClick={handleEliminarClick}>Eliminar</button></Link>
         </div>
     </div>
-    </div>
-    </div>
+  </>
   );
 };
 
