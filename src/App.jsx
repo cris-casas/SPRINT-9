@@ -1,16 +1,19 @@
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
+import GameProvider from "./context/GameContext";
 import SignUpProvider from './context/SignUpContext';
 import LogInProvider from './context/LogInContext';
-import GameProvider from "./context/GameContext";
+
 import Home from './pages/Home'
 import LoginPage from './pages/LoginPage'
 import SignUpPage from './pages/SignUpPage'
+import WelcomeStartPage from './pages/WelcomeStartPage'
 import PriceOptionsPage from './pages/PriceOptionsPage'
+import ObjectsEliminatePage from './pages/ObjectsEliminatePage'
 import ObjectsPage from './pages/ObjectsPage'
 import StoragesPage from './pages/StoragesPage'
+import StoragesStartPage from './pages/StoragesStartPage'
+import WinnerAnnouncePage from './pages/WinnerAnnouncePage'
 import ResultsPage from './pages/ResultsPage'
-import WelcomeStartPage from './pages/WelcomeStartPage'
-import ObjectsEliminatePage from './pages/ObjectsEliminatePage'
 import './App.css'
 
 function App() {
@@ -33,7 +36,9 @@ function App() {
                 <Route path="/eliminate-objects" element={<ObjectsEliminatePage/>} />
                 <Route path="/objects" element={<ObjectsPage/>} />
                 <Route path="/storages" element={<StoragesPage/>} />
-                <Route path="/results" element={<ResultsPage/>} />
+                <Route path="/storages-start" element={<StoragesStartPage/>} />
+                <Route path="/winner" element={<WinnerAnnouncePage/>} />
+                <Route path="/ranking" element={<ResultsPage/>} />
               </Routes>
               </div>
             </div>

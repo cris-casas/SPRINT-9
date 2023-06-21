@@ -15,7 +15,7 @@ const Login = () => {
   return (
 
         <div className="card-body flex justify-center">
-            <h1 className="font-black" >Login to your account</h1>
+            <h1 className="font-black text-3xl" >Login to your account</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form-control">
                     <label className="label">

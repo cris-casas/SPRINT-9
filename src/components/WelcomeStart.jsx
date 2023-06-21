@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import WelcomeImg from "../assets/subasta-trasteros-welcome.svg";
+import MainImg from "../assets/subasta-trasteros-welcome.svg";
 
 const WelcomeStart = () => {
 
   return (
     <>
-      <img src={WelcomeImg} className="rounded-xl" alt="Subasta de trasteros" />
+      <img src={MainImg} className="rounded-xl" alt={MainImg} />
       <div className="card-actions">
         <div className="card-body items-center text-center">
           <Link to='/price' className="link" >

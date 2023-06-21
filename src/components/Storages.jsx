@@ -9,6 +9,7 @@ const Storages = () => {
   return (
     
     <>
+    <div className="overflow-y-auto h-100">
         <h1 className="text-3xl font-bold mt-10">Trasteros comprados</h1>
         {storages.map((storage) => (
         <div className="hero bg-base-200" key={storage.id}>
@@ -48,12 +49,13 @@ const Storages = () => {
         <div className="hero bg-base-200">
         <div className="hero-content text-center">
             <div className="max-w-md">
-            <Link to='/results' className="link" >
+            <Link to='/winner' className="link" >
                 <button className="btn btn-outline" onClick={handleStorage}>Calcular</button>
             </Link>
             </div>
         </div>
         </div>
+    </div>
     </>
     
 

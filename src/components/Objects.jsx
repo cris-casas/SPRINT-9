@@ -30,10 +30,14 @@ const Objects = () => {
             </div>
           </div>
         ))}
-        </div>
-          <Link to='/storages' className="link" ><button className="btn m-4" onClick={handleEliminarClick}>Eliminar</button></Link>
-        </div>
-    </div>
+      </div>
+      <div className="mb-6">
+        <Link to='/storages-start'><button className="btn m-1 btn-primary btn-wide" onClick={handleEliminarClick}>Eliminar</button></Link>
+        <button className="btn m-1 btn-outline btn-primary border-2 btn-wide">Reset</button>
+      </div>
+
+      </div>
+      </div>
   </>
   );
 };
