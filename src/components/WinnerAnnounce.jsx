@@ -11,19 +11,14 @@ const WinnerAnnounce = () => {
     <>
        {winningPlayer && (
       <div className="card">
-      <h1 className="font-black text-3xl" >{winningPlayer}</h1>
+      <h1 className="font-black text-3xl" >Ganador: <br></br>{winningPlayer}</h1>
       <figure>
         <img src={MainImg} className="" alt={MainImg} />
       </figure>
       <div className="card-body items-center text-center">
-        <div className="card-actions">
-          <Link to='/objects' className="link" >
-            <button className="btn btn-outline btn-primary border-2">Atrás</button>
-          </Link>
-          <Link to='/storages' className="link" >
-            <button className="btn btn-primary">Start</button>
-          </Link>
-        </div>
+        <Link to='/start' className="link" >
+          <button className="btn btn-primary">Volver a empezar</button>
+        </Link>
       </div>
     </div>
       )}

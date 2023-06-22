@@ -10,9 +10,9 @@ const TableStorage = () => {
     {showTable && (
         <div className="hero bg-base-200">
           <div className="hero-content text-center">
-            <div className="max-w-md">
+            <div>
             <h1 className="text-3xl font-bold my-10">Resultados</h1>
-              <table className="table w-full">
+              <table className="table">
                 <thead>
                   <tr>
                     <th>Trastero</th>

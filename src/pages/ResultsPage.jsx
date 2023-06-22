@@ -7,7 +7,6 @@ const ResultsPage = () => {
   return (
     <>
         <TableStorage />
-        <Winner />
         <StartButton />
     </>
   )
