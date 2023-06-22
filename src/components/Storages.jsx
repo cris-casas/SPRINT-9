@@ -10,40 +10,35 @@ const Storages = () => {
     
     <>
     <div className="overflow-y-auto h-100">
+        <div className="form-control m-5">
         <h1 className="text-3xl font-bold mt-10">Trasteros comprados</h1>
         {storages.map((storage) => (
-        <div className="hero bg-base-200" key={storage.id}>
-            <div className="hero-content text-center">
-            <div className="max-w-md">
-                <div className="form-control">
-                <h2 className="text-lg font-bold my-5">{storage.name}</h2>
-                <label className="input-group input-group-md">
-                    <span>Price</span>
-                    <input
-                    type="text"
-                    placeholder="Introduce el precio pagado"
-                    className="input input-bordered"
-                    name="price"
-                    value={storage.formData.price}
-                    onChange={(e) => handleInputChange(e, storage.id)}
-                    />
-                    <span>€</span>
-                </label>
-                <label className="input-group input-group-md">
-                    <span>Jugador</span>
-                    <input
-                    type="text"
-                    placeholder="Jugador que ganó la subasta"
-                    className="input input-bordered"
-                    name="player"
-                    value={storage.formData.player}
-                    onChange={(e) => handleInputChange(e, storage.id)}
-                    />
-                </label>
-                </div>
+        <div key={storage.id} className="card border-solid border-2 border-primary shadow-lg m-5" >
+            <h2 className="text-lg font-bold mb-5">{storage.name}</h2>
+            <label className="input-group input-group-md">
+                <span>Price</span>
+                <input
+                type="text"
+                placeholder="Introduce el precio pagado"
+                className="input input-bordered"
+                name="price"
+                value={storage.formData.price}
+                onChange={(e) => handleInputChange(e, storage.id)}
+                />
+                <span>€</span>
+            </label>
+            <label className="input-group input-group-md">
+                <span>Jugador</span>
+                <input
+                type="text"
+                placeholder="Jugador que ganó la subasta"
+                className="input input-bordered"
+                name="player"
+                value={storage.formData.player}
+                onChange={(e) => handleInputChange(e, storage.id)}
+                />
+            </label>
             </div>
-            </div>
-        </div>
         ))}
 
         <div className="hero bg-base-200">
@@ -55,6 +50,7 @@ const Storages = () => {
             </div>
         </div>
         </div>
+    </div>
     </div>
     </>
     

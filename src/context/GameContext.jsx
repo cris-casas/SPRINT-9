@@ -10,19 +10,19 @@ const GameProvider = ({ children }) => {
   const [storages, setStorages] = useState([
     { 
       id: 1, 
-      name: 'Storage 1', 
+      name: '1', 
       value: 3000, 
       formData: { price: '', player: '' },
     },
     { 
       id: 2, 
-      name: 'Storage 2', 
+      name: '2', 
       value: 6000, 
       formData: { price: '', player: '' },
     },
     { 
       id: 3, 
-      name: 'Storage 3', 
+      name: '3', 
       value: 5000, 
       formData: { price: '', player: '' },
     },
