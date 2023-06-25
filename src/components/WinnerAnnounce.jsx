@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { GameContext } from "../context/GameContext";
+import { StoragesContext } from "../context/StoragesContext";
 import { Link } from 'react-router-dom';
 import MainImg from "../assets/ganador.svg";
 
 const WinnerAnnounce = () => {
   
-  const { winningPlayer } = useContext(GameContext);
+  const { winningPlayer } = useContext(StoragesContext);
 
   return (
     <>

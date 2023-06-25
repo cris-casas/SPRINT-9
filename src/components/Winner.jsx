@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { GameContext } from "../context/GameContext";
+import { StoragesContext } from "../context/StoragesContext";
 
 const Winner = () => {
   
-  const { winningPlayer } = useContext(GameContext);
+  const { winningPlayer } = useContext(StoragesContext);
 
   return (
     <>

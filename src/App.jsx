@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import GameProvider from "./context/GameContext";
 import SignUpProvider from './context/SignUpContext';
 import LogInProvider from './context/LogInContext';
+import GameProvider from "./context/GameContext";
+import StoragesProvider from "./context/StoragesContext";
 
 import Home from './pages/Home'
 import LoginPage from './pages/LoginPage'
@@ -23,26 +24,28 @@ function App() {
       <SignUpProvider>
         <LogInProvider>
           <GameProvider>
-          <div className="mockup-phone">
-            <div className="camera"></div> 
-            <div className="display">
-            <div className="artboard artboard-demo phone-1">
-              <Routes>
-                <Route index element={<Home/>} />
-                <Route path="/start" element={<WelcomeStartPage/>} />
-                <Route path="/login" element={<LoginPage/>} />
-                <Route path="/signup" element={<SignUpPage/>} />
-                <Route path="/price" element={<PriceOptionsPage/>} />
-                <Route path="/eliminate-objects" element={<ObjectsEliminatePage/>} />
-                <Route path="/objects" element={<ObjectsPage/>} />
-                <Route path="/storages" element={<StoragesPage/>} />
-                <Route path="/storages-start" element={<StoragesStartPage/>} />
-                <Route path="/winner" element={<WinnerAnnouncePage/>} />
-                <Route path="/ranking" element={<ResultsPage/>} />
-              </Routes>
+            <StoragesProvider>
+              <div className="mockup-phone">
+                <div className="camera"></div> 
+                <div className="display">
+                <div className="artboard artboard-demo phone-1">
+                  <Routes>
+                    <Route index element={<Home/>} />
+                    <Route path="/start" element={<WelcomeStartPage/>} />
+                    <Route path="/login" element={<LoginPage/>} />
+                    <Route path="/signup" element={<SignUpPage/>} />
+                    <Route path="/price" element={<PriceOptionsPage/>} />
+                    <Route path="/eliminate-objects" element={<ObjectsEliminatePage/>} />
+                    <Route path="/objects" element={<ObjectsPage/>} />
+                    <Route path="/storages" element={<StoragesPage/>} />
+                    <Route path="/storages-start" element={<StoragesStartPage/>} />
+                    <Route path="/winner" element={<WinnerAnnouncePage/>} />
+                    <Route path="/ranking" element={<ResultsPage/>} />
+                  </Routes>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </StoragesProvider>
           </GameProvider>
         </LogInProvider>
       </SignUpProvider>

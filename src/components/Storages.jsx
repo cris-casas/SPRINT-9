@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { GameContext } from "../context/GameContext";
+import { StoragesContext } from "../context/StoragesContext";
 import { Link } from 'react-router-dom';
 
 const Storages = () => {
   
-  const { storages, handleStorage, handleInputChange } = useContext(GameContext);
+  const { storages, handleStorage, handleInputChange, } = useContext(StoragesContext);
 
   return (
     
@@ -53,7 +53,6 @@ const Storages = () => {
     </div>
     </div>
     </>
-    
 
   );
 };

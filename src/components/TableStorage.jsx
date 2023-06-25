@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { GameContext } from "../context/GameContext";
+import { StoragesContext } from "../context/StoragesContext";
 import { Link } from 'react-router-dom';
 
 const TableStorage = () => {
   
-  const { storages, showTable } = useContext(GameContext);
+  const { storages, showTable } = useContext(StoragesContext);
 
   return (
     <>
